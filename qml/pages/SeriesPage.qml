@@ -124,9 +124,8 @@ Page {
                 Component { id: settingsComponent; SettingsPage {} }
             }
             MenuItem {
-                text: seriesPage.isUpdating ? qsTr("Refreshing...") : qsTr("Refresh")
-                visible: seriesList.count != 0
-                enabled: !seriesPage.isUpdating
+                text: qsTr("Refresh")
+                visible: seriesList.count != 0 && !isUpdating
                 onClicked: {
                     python.call('seriesfinale.seriesfinale.settingsWrapper.setLastCompleteUpdate', [new Date().toISOString().slice(0, 10)]);
                     python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', []);
@@ -137,6 +136,11 @@ Page {
                 visible: !seriesPage.isUpdating
                 onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
                 Component { id: addShowComponent; AddShow {} }
+            }
+
+            MenuLabel {
+                visible: isUpdating
+                text: qsTr("Refreshing...")
             }
         }
 

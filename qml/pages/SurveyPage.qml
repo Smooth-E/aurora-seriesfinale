@@ -71,6 +71,11 @@ Page {
                 onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
                 Component { id: addShowComponent; AddShow {} }
             }
+
+            MenuLabel {
+                visible: isUpdating
+                text: qsTr("Refreshing...")
+            }
         }
 
         header: PageHeader {

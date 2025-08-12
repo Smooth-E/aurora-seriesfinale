@@ -15,24 +15,189 @@
         <source>Search</source>
         <translation>Sök</translation>
     </message>
+    <message>
+        <source>No description available.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EpisodePage</name>
     <message>
-        <source>Air date:</source>
-        <translation>Sändningsdatum:</translation>
-    </message>
-    <message>
-        <source>Rating:</source>
-        <translation>Betyg:</translation>
-    </message>
-    <message>
-        <source>Overview:</source>
-        <translation>Översikt:</translation>
-    </message>
-    <message>
         <source>Watched</source>
         <translation>Sedd</translation>
+    </message>
+    <message>
+        <source>Air date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LicenseListPart</name>
+    <message>
+        <source>License text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Opal.About</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">Om</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Development</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>show contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changelog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>show license(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>News</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changes since version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thank you!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acknowledgements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download license texts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>License(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Note: please check the source code for most accurate information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Opal.About.Common</name>
+    <message>
+        <source>If you want to support my work, you can buy me a cup of coffee.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can support this project by contributing, or by donating using any of these services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contributions to translations or code would be most welcome.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Opal.LinkHandler</name>
+    <message>
+        <source>Share link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied to clipboard: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy text to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open externally</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrioritySelectionDialog</name>
+    <message>
+        <source>Select a priority</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -94,10 +259,6 @@
     <message>
         <source>Delete show</source>
         <translation>Ta bort serien</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Tar bort</translation>
     </message>
     <message>
         <source>No shows</source>
@@ -168,6 +329,30 @@
     </message>
 </context>
 <context>
+    <name>ShowInfoDialog</name>
+    <message>
+        <source>Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Runtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min</source>
+        <comment>as in “this episode is 30 minutes long</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Genre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ShowPage</name>
     <message>
         <source>Refreshing...</source>
@@ -192,10 +377,6 @@
     <message>
         <source>Delete season</source>
         <translation>Ta bort säsong</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Tar bort</translation>
     </message>
     <message>
         <source>No seasons</source>
@@ -252,16 +433,16 @@
         <translation type="unfinished">Ta bort serien</translation>
     </message>
     <message>
-        <source>Deleting</source>
-        <translation type="unfinished">Tar bort</translation>
-    </message>
-    <message>
         <source>No shows</source>
         <translation type="unfinished">Inga serier</translation>
     </message>
     <message>
         <source>Change show priority</source>
         <translation>Ändra TV-serieprioritet</translation>
+    </message>
+    <message>
+        <source>Refreshing...</source>
+        <translation type="unfinished">Uppdaterar...</translation>
     </message>
 </context>
 <context>

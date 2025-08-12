@@ -68,8 +68,7 @@ Page {
             MenuItem {
                 text: qsTr("Add Show")
                 visible: !isUpdating
-                onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
-                Component { id: addShowComponent; AddShow {} }
+                onClicked: { pageStack.push(Qt.resolvedUrl("AddShow.qml")) }
             }
 
             MenuLabel {
@@ -103,10 +102,6 @@ Page {
             subtitle: model.infoMarkup
             priority: model.priority
             iconSource: model.coverImage
-            Component {
-                id: showPageComponent
-                ShowPage { show: model }
-            }
 
             Component {
                 id: contextMenu
@@ -135,7 +130,7 @@ Page {
             }
 
             onClicked: {
-                pageStack.push(showPageComponent.createObject(pageStack));
+                pageStack.push(Qt.resolvedUrl("ShowPage.qml"), {show: model});
             }
         }
 

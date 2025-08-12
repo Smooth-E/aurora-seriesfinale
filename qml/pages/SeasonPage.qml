@@ -69,15 +69,11 @@ Page {
 
         delegate: EpisodeListRowDelegate {
             episode: model
-            Component {
-                id: episodePageComponent
-                EpisodePage {
-                    show: seasonPage.show;
-                    episode: model;
-                    seasonImg: season.seasonImage
-                }
-            }
-            onClicked: pageStack.push(episodePageComponent.createObject(pageStack))
+            onClicked: pageStack.push(Qt.resolvedUrl("EpisodePage.qml"), {
+                                          show: seasonPage.show,
+                                          episode: model,
+                                          seasonImg: season.seasonImage,
+                                      })
             onWatchToggled: {
                 python.call('seriesfinale.seriesfinale.series_manager.set_episode_watched', [watched, seasonPage.show.showName, model.episodeName]);
             }

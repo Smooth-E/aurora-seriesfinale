@@ -155,10 +155,6 @@ Page {
             iconSource: model.seasonImage
 
             Component {
-                id: seasonPageComponent
-                SeasonPage { show: showPage.show; season: model }
-            }
-            Component {
                 id: contextMenu
                 ContextMenu {
                     MenuItem {
@@ -188,7 +184,10 @@ Page {
                 })
             }
 
-            onClicked: pageStack.push(seasonPageComponent.createObject(pageStack))
+            onClicked: pageStack.push(Qt.resolvedUrl("SeasonPage.qml"), {
+                                          show: showPage.show,
+                                          season: model,
+                                      })
         }
 
         ViewPlaceholder {

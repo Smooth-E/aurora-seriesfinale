@@ -115,13 +115,11 @@ Page {
 
             MenuItem {
                 text: qsTr("About")
-                onClicked: pageStack.push(aboutComponent.createObject(pageStack))
-                Component { id: aboutComponent; AboutPage {} }
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
                 text: qsTr("Settings")
-                onClicked: pageStack.push(settingsComponent.createObject(pageStack))
-                Component { id: settingsComponent; SettingsPage {} }
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }
             MenuItem {
                 text: qsTr("Refresh")
@@ -134,8 +132,7 @@ Page {
             MenuItem {
                 text: qsTr("Add Show")
                 visible: !seriesPage.isUpdating
-                onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
-                Component { id: addShowComponent; AddShow {} }
+                onClicked: { pageStack.push(Qt.resolvedUrl("AddShow.qml")) }
             }
 
             MenuLabel {
@@ -169,10 +166,6 @@ Page {
             subtitle: model.infoMarkup
             iconSource: model.coverImage
             priority: model.priority
-            Component {
-                id: showPageComponent
-                ShowPage { show: model }
-            }
 
             Component {
                 id: contextMenu
@@ -211,7 +204,7 @@ Page {
             }
 
             onClicked: {
-                pageStack.push(showPageComponent.createObject(pageStack));
+                pageStack.push(Qt.resolvedUrl("ShowPage.qml"), {show: model});
             }
         }
 

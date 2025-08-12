@@ -42,7 +42,6 @@ Dialog {
         python.call('seriesfinale.seriesfinale.settingsWrapper.getHighlightSpecial', [], function(result) {
             highlightSpecialSwitch.checked = result;
         })
-        seriesPage.hasChanged = true
     }
 
     SilicaFlickable {

@@ -499,9 +499,19 @@ class Episode(object):
             return _('Tomorrow')
         if today - timedelta(days = 1) == self.air_date:
             return _('Yesterday')
-        next_air_date_str = self.air_date.strftime('%d %b')
+
         if self.air_date.year != datetime.today().year:
-            next_air_date_str += self.air_date.strftime(' %Y')
+            # TRANSLATORS:
+            # This is a Python-formatted date (day, month, year).
+            # Translate it to the form preferred in your language.
+            # See: https://strftime.org
+            next_air_date_str = self.air_date.strftime(_('%d %b %Y'))
+        else:
+            # TRANSLATORS: This is a Python-formatted date (day and month only).
+            # Translate it to the form preferred in your language.
+            # See: https://strftime.org
+            next_air_date_str = self.air_date.strftime(_('%d %b'))
+
         return next_air_date_str
 
     def already_aired(self):

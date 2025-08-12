@@ -1,8 +1,15 @@
 *.user*
 build/
+build-release/
 dist/
 __pycache__
 rpm/*.rpm
 TODO
 *~
 MANIFEST
+
+icons-src/raw
+icons-src/*/raw
+
+libs/opal-translations
+libs/opal-docs

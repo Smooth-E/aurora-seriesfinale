@@ -30,6 +30,8 @@ from SeriesFinale.settings import Settings
 from datetime import datetime
 from datetime import timedelta
 from xml.sax import saxutils
+from typing import List
+import dataclasses
 import gettext
 import locale
 import logging
@@ -599,7 +601,7 @@ class SeriesManager(object):
 
             # Searching
             self.searching = False
-            self.search_results = []
+            self.search_results: List[thetvdbapi.SearchResult] = []
 
             # Languages
             # self.languages = self.thetvdb.get_available_languages()
@@ -659,7 +661,8 @@ class SeriesManager(object):
         save_file.write(serialized)
         save_file.close()
 
-    def get_searching(self): return self.searching
+    def get_searching(self):
+        return self.searching
 
     def search_shows(self, terms, language = "en"):
         if not terms:
@@ -677,13 +680,13 @@ class SeriesManager(object):
     def search_result_model(self):
         search_results_list = []
         for item in self.search_results:
-            search_results_list.append({'data': item})
+            search_results_list.append(dataclasses.asdict(item))
         return search_results_list
 
-    def _search_finished_callback(self, tvdbshows, error):
+    def _search_finished_callback(self, tvdbshows: List['SearchResult'], error):
         if not error:
-            for show_id, show in tvdbshows:
-                self._cached_tvdb_shows[show_id] = show
+            for show in tvdbshows:
+                self._cached_tvdb_shows[show.series_id] = show.series_name
                 self.search_results.append(show)
         self.searching = False
         pyotherside.send('searching', self.searching)

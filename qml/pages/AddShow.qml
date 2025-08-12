@@ -1,13 +1,26 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2015-2017 Core Comic
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../modules/Opal/Delegates" 1.0 as D
+
 Page {
-    id: searchPage
+    id: root
 
     property bool isSearching: false
     property string searchLanguage: 'en'
 
-    Component.onCompleted: searchField.forceActiveFocus()
+    readonly property int _limit: 15
+
+    Component.onCompleted: {
+        searchField.forceActiveFocus()
+    }
 
     onStatusChanged: {
         if (status === PageStatus.Activating) {
@@ -19,21 +32,27 @@ Page {
 
     function search() {
         parent.focus = true //Make sure the keyboard closes and the text is updated
-        python.call('seriesfinale.seriesfinale.series_manager.search_shows', [searchField.text, searchLanguage], function() {});
+        python.call('seriesfinale.seriesfinale.series_manager.search_shows',
+                    [searchField.text, searchLanguage], function() {});
     }
 
     Connections {
         target: python
 
         onSearchingChanged: {
-            searchPage.isSearching = searching;
+            root.isSearching = searching;
             if(!searching) {
                 python.call('seriesfinale.seriesfinale.series_manager.search_result_model', [], function(result) {
                     // Clear the data in the list model
                     listModel.clear();
+
                     // Load the received data into the list model
                     for (var i=0; i<result.length; i++) {
                         listModel.append(result[i]);
+
+                        if (i > _limit) {
+                            break
+                        }
                     }
                 });
             }
@@ -42,7 +61,7 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + Theme.horizontalPageMargin
 
         VerticalScrollDecorator {}
 
@@ -53,10 +72,9 @@ Page {
             }
         }
 
-
         Column {
             id: column
-            width: searchPage.width
+            width: root.width
 
             PageHeader {
                 title: qsTr("Add show")
@@ -87,30 +105,76 @@ Page {
                     id: listModel
                 }
 
-                delegate: ListItem {
-                    Label {
+                delegate: D.TwoLineDelegate {
+                    id: item
+                    text: model.series_name
+                    description: model.start_year
+
+                    padding {
+                        right: 0
+                        topBottom: 0
+                    }
+
+                    textLabel.font.bold: true
+                    descriptionLabel.font.bold: true
+
+                    onClicked: {
+                        python.call('seriesfinale.seriesfinale.series_manager.get_complete_show',
+                                    [model.series_name, searchLanguage], function() {});
+                        pageStack.pop()
+                    }
+
+                    menu: Component {
+                        ContextMenu {
+                            MenuLabel {
+                                text: model.series_name
+                            }
+
+                            MenuLabel {
+                                text: model.blurb || qsTr("No description available.")
+                                truncationMode: TruncationMode.Elide
+                            }
+                        }
+                    }
+
+                    Item {
+                        z: -1
+                        opacity: Theme.opacityLow
                         anchors {
                             left: parent.left
+                            leftMargin: -item.padding.effectiveLeft
                             right: parent.right
-                            leftMargin: searchField.textLeftMargin
-                            rightMargin: searchField.textRightMargin
-                            verticalCenter: parent.verticalCenter
+                            top: parent.top
+                            bottom: parent.bottom
                         }
-                        text: model.data
-                        truncationMode: TruncationMode.Fade
-                    }
-                    onClicked: {
-                        python.call('seriesfinale.seriesfinale.series_manager.get_complete_show', [model.data, searchLanguage], function() {});
-                        pageStack.pop()
+
+                        Image {
+                            id: banner
+                            anchors.fill: parent
+                            fillMode: Image.PreserveAspectCrop
+                            source: model.banner_url
+                            sourceSize {
+                                width: width
+                                height: height
+                            }
+                        }
+
+                        OpacityRampEffect {
+                            sourceItem: banner
+                            direction: OpacityRamp.RightToLeft
+                            slope: 2.0
+                            offset: 0.3
+                        }
                     }
                 }
             }
         }
+
         BusyIndicator {
-            size: BusyIndicatorSize.Medium
+            size: BusyIndicatorSize.Large
             anchors {
-                top: parent.top
-                topMargin: 10*Theme.paddingLarge
+                verticalCenterOffset: -Theme.itemSizeLarge
+                verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
             visible: isSearching

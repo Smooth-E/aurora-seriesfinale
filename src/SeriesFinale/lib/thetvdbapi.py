@@ -25,6 +25,31 @@ import re
 
 import xml.etree.cElementTree as ET
 
+from dataclasses import dataclass
+
+
+@dataclass
+class SearchResult:
+    series_id: str
+    series_name: str
+    banner_url: str
+    blurb: str
+    start_year: str
+
+    @staticmethod
+    def from_xml(xml):
+        mirror = "https://www.thetvdb.com/"
+        banner = xml.findtext("banner")
+
+        return SearchResult(
+            series_id=xml.findtext("seriesid"),
+            series_name=xml.findtext("SeriesName"),
+            banner_url=mirror + banner.lstrip('/') if banner else '',
+            blurb=xml.findtext("Overview"),
+            start_year=(xml.findtext("FirstAired").split('-') or [''])[0],
+        )
+
+
 class TheTVDB(object):
     def __init__(self, api_key):
         self.api_key = api_key
@@ -183,7 +208,8 @@ class TheTVDB(object):
         if data:
             try:
                 tree = ET.parse(data)
-                show_list = [(show.findtext("seriesid"), show.findtext("SeriesName")) for show in tree.getiterator("Series") if show.findtext("language") == language]
+                show_list = [SearchResult.from_xml(show)
+                             for show in tree.getiterator("Series") if show.findtext("language") == language]
             except SyntaxError:
                 pass
 

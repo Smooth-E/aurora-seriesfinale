@@ -15,6 +15,7 @@ Dialog {
         python.call('seriesfinale.seriesfinale.settingsWrapper.setUpdateEndedShows', [updateEndedShowsSwitch.checked])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setHighlightSpecial', [highlightSpecialSwitch.checked])
         python.call('seriesfinale.seriesfinale.saveSettings', [])
+        python.settingsChanged()
     }
 
     Component.onCompleted: {

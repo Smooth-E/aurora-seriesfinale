@@ -6,8 +6,7 @@ import "cover"
 import io.thp.pyotherside 1.3
 import Nemo.Notifications 1.0
 
-ApplicationWindow
-{
+ApplicationWindow {
     id: app
 
     initialPage: Component { SeriesPage {} }
@@ -16,7 +15,7 @@ ApplicationWindow
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
 
-    property string coverImage: 'seriesfinale_cover.png'
+    property string coverImage: Qt.resolvedUrl("images/seriesfinale_cover.png")
 
     property var prioListModel: [
         { name: qsTr("None"), color: "#93a1a1" },
@@ -46,6 +45,8 @@ ApplicationWindow
 
         property bool ready: false
         property string version
+
+        signal settingsChanged()
 
         signal searchingChanged(bool searching)
         signal updatingChanged(bool updating)

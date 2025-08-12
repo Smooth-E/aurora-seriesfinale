@@ -1,10 +1,22 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2015-2016 Core Comic
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../modules/Opal/SmartScrollbar" as S
 import '../util.js' as Util
 
 Page {
     id: seriesPage
+
+    Component.onCompleted: {
+        update()
+    }
 
     property bool isUpdating: false
     property bool isLoading: false
@@ -22,7 +34,12 @@ Page {
 
             isLoading = false;
             hasChanged = false;
-            coverImage = seriesList.get(getRandomNumber(0, result.length)).coverImage;
+
+            var random = seriesList.get(getRandomNumber(0, result.length))
+
+            if (!!random) {
+                coverImage = random.coverImage
+            }
         });
 
         python.call('seriesfinale.seriesfinale.settingsWrapper.getSortByGenre', [], function(result) {
@@ -54,6 +71,11 @@ Page {
 
     Connections {
         target: python
+
+        onSettingsChanged: {
+            hasChanged = true
+            update()
+        }
 
         onLoadingChanged: {
             seriesPage.isLoading = true;
@@ -107,7 +129,6 @@ Page {
     SilicaListView {
         id: listView
         anchors.fill: parent
-        spacing: Theme.paddingMedium
 
         // PullDownMenu
         PullDownMenu {
@@ -146,6 +167,11 @@ Page {
             title: "SeriesFinale"
         }
 
+        footer: Item {
+            width: parent.width
+            height: Theme.horizontalPageMargin
+        }
+
         model: ListModel {
             id: seriesList
         }
@@ -157,50 +183,45 @@ Page {
         }
 
         delegate: ListRowDelegate {
-            id: listDelegate
-
+            id: item
+            text: model.showName
+            description: model.infoMarkup
+            iconSource: model.coverImage
             isUpdating: model.isUpdating
             isPremiere: model.nextIsPremiere && doHighlight
             isShowPremiere: model.isShowPremiere && doHighlight
-            title: model.showName
-            subtitle: model.infoMarkup
-            iconSource: model.coverImage
             priority: model.priority
+            infoLines: 3
 
-            Component {
-                id: contextMenu
+            menu: Component {
                 ContextMenu {
                     MenuItem {
-                        id: markNextItem
                         visible: !model.isWatched
                         text: qsTr('Mark next episode')
                         onClicked: {
-                            python.call('seriesfinale.seriesfinale.series_manager.mark_next_episode_watched', [true, model.showName])
-                            seriesPage.update()
+                            python.call('seriesfinale.seriesfinale.series_manager.mark_next_episode_watched', [true, model.showName],
+                                        function(){seriesPage.update()})
                         }
                     }
                     MenuItem {
-                        id: markAllItem
                         visible: !model.isWatched
                         text: qsTr('Mark show as watched')
                         onClicked: {
-                            python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, model.showName])
-                            seriesPage.update()
+                            python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, model.showName],
+                                        function(){seriesPage.update()})
                         }
                     }
                     MenuItem {
                         text: qsTr("Delete show")
-                        onClicked: showRemorseItem()
+                        onClicked: {
+                            item.remorseDelete((function(){
+                                this.python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name',
+                                                 [this.model.showName])
+                                this.item.animateRemoval(this.item)
+                            }).bind({python: python, item: item, model: model}))
+                        }
                     }
                 }
-            }
-
-            RemorseItem { id: remorse }
-            function showRemorseItem() {
-                remorse.execute(listDelegate, qsTr("Deleting"), function() {
-                    python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name', [model.showName]);
-                    //seriesList.remove(index);
-                })
             }
 
             onClicked: {
@@ -222,6 +243,17 @@ Page {
             size: BusyIndicatorSize.Large
         }
 
-        VerticalScrollDecorator {}
+        S.SmartScrollbar {
+            flickable: listView
+            readonly property int scrollIndex: {
+                var idx = flickable.indexAt(flickable.contentX, flickable.contentY)
+                if (idx < 0) idx = flickable.indexAt(flickable.contentX, flickable.contentY +
+                                                     Theme.itemSizeMedium)
+                return idx
+            }
+
+            text: listView.currentSection
+            description: "%1 / %2".arg(scrollIndex+2).arg(flickable.count)
+        }
     }
 }

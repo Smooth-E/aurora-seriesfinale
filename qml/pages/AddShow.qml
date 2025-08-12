@@ -78,6 +78,17 @@ Page {
 
             PageHeader {
                 title: qsTr("Add show")
+
+                BusyIndicator {
+                    size: BusyIndicatorSize.Large
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        top: parent.bottom
+                        topMargin: searchField.height + Theme.itemSizeLarge
+                    }
+                    visible: isSearching
+                    running: visible
+                }
             }
 
             SearchField {
@@ -168,17 +179,6 @@ Page {
                     }
                 }
             }
-        }
-
-        BusyIndicator {
-            size: BusyIndicatorSize.Large
-            anchors {
-                verticalCenterOffset: -Theme.itemSizeLarge
-                verticalCenter: parent.verticalCenter
-                horizontalCenter: parent.horizontalCenter
-            }
-            visible: isSearching
-            running: visible
         }
     }
 }

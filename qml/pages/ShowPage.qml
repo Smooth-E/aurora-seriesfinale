@@ -1,8 +1,14 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2015-2016 Core Comic
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 import '../util.js' as Util
-
 
 Page {
     id: showPage
@@ -10,7 +16,6 @@ Page {
 
     property bool isUpdating: false
     property bool hasChanged: false
-
 
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_seasons_list', [show.showName], function(result) {
@@ -29,7 +34,6 @@ Page {
         }
     }
 
-
     Connections {
         target: python
 
@@ -41,7 +45,6 @@ Page {
         }
 
         onInfoMarkupChanged: hasChanged = true
-
 
         onShowArtChanged: {
             python.call('seriesfinale.seriesfinale.series_manager.get_seasons_list', [show.showName], function(result) {
@@ -55,71 +58,6 @@ Page {
         //}
     }
 
-    Dialog {
-        id: showInfoDialog
-
-        SilicaFlickable {
-            id: content
-            anchors.fill: parent
-
-            contentWidth: grid.width
-            contentHeight: grid.height
-
-            VerticalScrollDecorator { flickable: flickable }
-
-            Column {
-                id: grid
-
-                width: showInfoDialog.width
-                spacing: Theme.paddingLarge
-
-                PageHeader {
-                    title: show.showName
-                }
-
-                MouseArea{
-                    width: showCover.width
-                    height: showCover.height + imdbBanner.height
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    Image {
-                        id: showCover
-                        source: show.coverImage
-                        height: 300
-                        fillMode: "PreserveAspectFit"
-                        smooth: true
-                    }
-
-                    Image {
-                        id: imdbBanner
-                        anchors.top: showCover.bottom
-                        source: '../../src/SeriesFinale/imdb_banner.png'
-                        width: showCover.width
-                        fillMode: "PreserveAspectFit"
-                        smooth: true
-                    }
-
-                    onClicked: {
-                        Qt.openUrlExternally('http://www.imdb.com/title/' + show.imdbId )
-                    }
-
-                }
-
-
-                Text {
-                    id: showInfoDescription
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width - 2*Theme.horizontalPageMargin
-                    text: show.showOverview
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                    wrapMode: Text.Wrap
-                }
-            }
-        }
-    }
-
-
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -127,20 +65,32 @@ Page {
         // PullDownMenu
         PullDownMenu {
             MenuItem {
-                text: showPage.isUpdating ? qsTr("Refreshing...") : qsTr("Refresh")
-                visible: seasonList.count != 0
-                enabled: !showPage.isUpdating
-                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
+                text: qsTr("Refresh")
+                visible: seasonList.count != 0 && !isUpdating
+                onClicked: {
+                    python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
+                }
             }
             MenuItem {
                 text: qsTr("Info")
-                onClicked: showInfoDialog.open()
+                onClicked: pageStack.push(Qt.resolvedUrl("ShowInfoDialog.qml"), {show: showPage.show})
+            }
+            MenuLabel {
+                visible: isUpdating
+                text: qsTr("Refreshing...")
             }
         }
 
         header: PageHeader {
             id: header
             title: show.showName
+            wrapMode: Text.Wrap
+            _titleItem.horizontalAlignment: Text.AlignRight
+        }
+
+        footer: Item {
+            width: parent.width
+            height: Theme.horizontalPageMargin
         }
 
         model: ListModel {
@@ -148,52 +98,59 @@ Page {
         } //show.get_seasons_model()
 
         delegate: ListRowDelegate {
-            id: listDelegate
+            id: item
 
-            title: model.seasonName
-            subtitle: model.seasonInfoMarkup
+            text: model.seasonName
+            description: model.seasonInfoMarkup
             iconSource: model.seasonImage
+            infoLines: 2
 
-            Component {
-                id: contextMenu
+            menu: Component {
                 ContextMenu {
                     MenuItem {
                         id: markAllItem
                         text: model.isWatched ? qsTr('Mark None') : qsTr('Mark All')
                         onClicked: {
                             if (model.isWatched) {
-                                python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [false, showPage.show.showName, model.seasonNumber])
+                                python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched',
+                                            [false, showPage.show.showName, model.seasonNumber])
                             } else {
-                                python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, showPage.show.showName, model.seasonNumber])
+                                python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched',
+                                            [true, showPage.show.showName, model.seasonNumber])
                             }
                             showPage.update()
                         }
                     }
                     MenuItem {
                         text: qsTr("Delete season");
-                        onClicked: showRemorseItem()
+                        onClicked: {
+                            item.remorseDelete((function(){
+                                this.python.call('seriesfinale.seriesfinale.series_manager.delete_season',
+                                                 [this.showPage.show.showName, this.model.seasonNumber])
+                                this.item.animateRemoval(this.item)
+                            }).bind({python: python, item: item, showPage: showPage, model: model}))
+                        }
                     }
                 }
             }
 
-            RemorseItem { id: remorse }
-            function showRemorseItem() {
-                remorse.execute(listDelegate, qsTr("Deleting"), function() {
-                    python.call('seriesfinale.seriesfinale.series_manager.delete_season', [showPage.show.showName, model.seasonNumber]);
-                    seasonList.remove(index);
-                })
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("SeasonPage.qml"), {
+                                   show: showPage.show,
+                                   season: model,
+                                   model: seasonList,
+                                   index: index,
+                               })
             }
-
-            onClicked: pageStack.push(Qt.resolvedUrl("SeasonPage.qml"), {
-                                          show: showPage.show,
-                                          season: model,
-                                      })
         }
 
         ViewPlaceholder {
             id: emptyText
             text: qsTr('No seasons')
-            enabled: seasonList.count == 0 && !showPage.isUpdating
+            enabled: showPage.status == PageStatus.Active &&
+                     !showPage.isLoading &&
+                     !showPage.isUpdating &&
+                     seasonList.count == 0
         }
 
         BusyIndicator {

@@ -1,54 +1,60 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-BackgroundItem {
-    id: epListItem
-    width: parent.width
-    contentHeight: Theme.itemSizeSmall
+import "../modules/Opal/Delegates" as D
+
+D.TwoLineDelegate {
+    id: root
+    property bool switchVisible: true
+    property string title: episode.episodeName
+    property string subtitle: episode.airDate
+    property var episode: undefined
+
+    property bool _isWatched: episode.isWatched || false
+    property bool _isAired: episode.hasAired || false
 
     signal watchToggled(bool watched)
-    property bool switchVisible: true
-    property alias title: title.text
-    property alias subtitle: subtitle.text
-    property variant episode: undefined
 
-    Row {
-        anchors.fill: parent
-        anchors.leftMargin: switchVisible ? 0 : Theme.horizontalPageMargin
+    text: title
+    description: subtitle
 
-        Switch {
-            id: markItem
-            anchors.verticalCenter: parent.verticalCenter
-            checked: episode.isWatched
-            visible: switchVisible
+    leftItem: Switch {
+        height: minContentHeight
+        width: minContentHeight
+        visible: switchVisible
+        checked: episode.isWatched
+        onClicked: root.watchToggled(checked)
+    }
 
-            onClicked: {
-                epListItem.watchToggled(checked)
-            }
-        }
+    padding.topBottom: Theme.paddingSmall
+    minContentHeight: Theme.itemSizeSmall - padding.effectiveTop - padding.effectiveBottom
+    descriptionLabel.font.pixelSize: Theme.fontSizeTiny
 
-        Column {
-            id: column
-            anchors.verticalCenter: parent.verticalCenter
-            width: switchVisible ? parent.width - markItem.width - Theme.horizontalPageMargin
-                                 : parent.width - Theme.horizontalPageMargin
+    textLabel.palette {
+        primaryColor: root.palette.primaryColor
+        highlightColor: root.palette.highlightColor
+    }
+    descriptionLabel.palette {
+        primaryColor: root.palette.secondaryColor
+        highlightColor: root.palette.secondaryHighlightColor
+    }
 
-            Label {
-                id: title
-                width: parent.width
-                font.pixelSize: Theme.fontSizeSmall
-                color: episode.isWatched ? Theme.secondaryColor : episode.hasAired ? Theme.primaryColor : Theme.secondaryColor
-                text: episode.episodeName
-                truncationMode: TruncationMode.Fade
-            }
-
-            Label {
-                id: subtitle
-                font.pixelSize: Theme.fontSizeTiny
-                color: Theme.secondaryColor
-                text: episode.airDate
-                visible: text != ""
-            }
-        }
+    palette {
+        primaryColor: (_isWatched || !_isAired) ?
+                          Theme.secondaryColor : Theme.primaryColor
+        secondaryColor: (_isWatched || !_isAired) ?
+                            Theme.rgba(Theme.secondaryColor, Theme.opacityHigh) :
+                            Theme.secondaryColor
+        highlightColor: (_isWatched || !_isAired) ?
+                            Theme.secondaryHighlightColor : Theme.highlightColor
+        secondaryHighlightColor: (_isWatched || !_isAired) ?
+                                     Theme.rgba(Theme.secondaryHighlightColor, Theme.opacityHigh) :
+                                     Theme.secondaryHighlightColor
     }
 }

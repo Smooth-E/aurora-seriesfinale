@@ -1,127 +1,81 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2015-2016 Core Comic
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
     id: statisticsPage
 
+    property string numShows
+    property string watchedShows
+    property string endedShows
+    property string numEpisodes
+    property string watchedEpisodes
+    property string timeWatched
+    property string lastUpdate
+
     Component.onCompleted: {
         python.call('seriesfinale.seriesfinale.getStatistics', [], function(result) {
-            numShows.text = result.numSeries;
-            watchedShows.text = result.numSeriesWatched + ' (' + Math.round(100*result.numSeriesWatched/result.numSeries) + '%)';
-            endedShows.text = result.numSeriesEnded;
-            numEpisodes.text = result.numEpisodes;
-            watchedEpisodes.text = result.numEpisodesWatched + ' (' + Math.round(100*result.numEpisodesWatched/result.numEpisodes) + '%)';
-            timeWatched.text = Math.round(result.timeWatched/14.4)/100;
+            numShows = result.numSeries;
+            watchedShows = result.numSeriesWatched + ' (' + Math.round(100*result.numSeriesWatched/result.numSeries) + '%)';
+            endedShows = result.numSeriesEnded;
+            numEpisodes = result.numEpisodes;
+            watchedEpisodes = result.numEpisodesWatched + ' (' + Math.round(100*result.numEpisodesWatched/result.numEpisodes) + '%)';
+            timeWatched = Math.round(result.timeWatched/14.4)/100;
         })
         python.call('seriesfinale.seriesfinale.settingsWrapper.getLastCompleteUpdate', [], function(result) {
-            lastUpdate.text = result;
+            lastUpdate = result;
         })
-
     }
 
-
     SilicaFlickable {
-        id: flickableText
         anchors.fill: parent
-
-        contentHeight: contents.height
+        contentHeight: column.height
 
         VerticalScrollDecorator {}
 
-        anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.rightMargin: Theme.horizontalPageMargin
-
         Column {
-            id: contents
-            width: statisticsPage.width - Theme.horizontalPageMargin
+            id: column
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
             spacing: Theme.paddingLarge
 
             PageHeader {
                 title: qsTr("Statistics")
             }
 
-            Grid {
-                id: grid
-                columns: 2
-                spacing: Theme.paddingLarge
-
-                Text {
-                    text: qsTr("Number of shows:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: numShows
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Ended shows:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: endedShows
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Watched shows:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: watchedShows
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Number of episodes:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: numEpisodes
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Watched episodes:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: watchedEpisodes
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Days spent watching:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: timeWatched
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
-                Text {
-                    text: qsTr("Last refresh:")
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.primaryColor
-                }
-                Text {
-                    id: lastUpdate
-                    text: ""
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: Theme.secondaryColor
-                }
+            DetailItem {
+                label: qsTr("Number of shows:")
+                value: numShows
+            }
+            DetailItem {
+                label: qsTr("Ended shows:")
+                value: endedShows
+            }
+            DetailItem {
+                label: qsTr("Watched shows:")
+                value: watchedShows
+            }
+            DetailItem {
+                label: qsTr("Number of episodes:")
+                value: numEpisodes
+            }
+            DetailItem {
+                label: qsTr("Watched episodes:")
+                value: watchedEpisodes
+            }
+            DetailItem {
+                label: qsTr("Days spent watching:")
+                value: timeWatched
+            }
+            DetailItem {
+                label: qsTr("Last refresh:")
+                value: lastUpdate
             }
         }
     }

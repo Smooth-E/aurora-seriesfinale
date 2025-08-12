@@ -1,94 +1,122 @@
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-FileCopyrightText: 2024-2025 Mirian Margiani
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../modules/Opal/About" 1.0
 
-Page {
-    id: aboutPage
+AboutPageBase {
+    id: root
+    allowedOrientations: Orientation.All
 
-    property string license: 'SeriesFinale is free software: you can redistribute it ' +
-                             'and/or modify it under the terms of the GNU General Public License as published by ' +
-                             'the Free Software Foundation, either version 3 of the License, or ' +
-                             '(at your option) any later version.<br/><br/>' +
+    appName: "SeriesFinale"
+    appIcon: Qt.resolvedUrl("../images/harbour-seriesfinale.png")
+    appVersion: python.version
+    appRelease: "1"
+      description: qsTr("A TV series database app that helps you " +
+                        "keep track of what you are watching.")
+    sourcesUrl: "https://github.com/corecomic/seriesfinale"
+    // translationsUrl: "https://weblate.org"
 
-                             'SeriesFinale is distributed in the hope that it will be useful, ' +
-                             'but WITHOUT ANY WARRANTY; without even the implied warranty of ' +
-                             'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ' +
-                             'GNU General Public License for more details.<br/><br/>' +
+    authors: [
+        "2015-%1 Core Comic and contributors".arg((new Date()).getFullYear()),
+    ]
+    licenses: License { spdxId: "GPL-3.0-or-later" }
 
-                             'You should have received a copy of the GNU General Public License ' +
-                             'along with SeriesFinale.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.'
+    PullDownMenu {
+        parent: root.flickable
 
-    SilicaFlickable {
-        id: flickableText
-        anchors.fill: parent
-
-        contentHeight: contents.height
-        contentWidth: contents.width
-
-        VerticalScrollDecorator {}
-
-        Column {
-            id: contents
-            width: aboutPage.width
-            spacing: Theme.paddingLarge
-
-            PageHeader {
-                title: 'SeriesFinale ' + python.version
-            }
-
-            Column {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: Theme.horizontalPageMargin
-                    rightMargin: Theme.horizontalPageMargin
-                }
-                spacing: Theme.paddingLarge
-
-                Label {
-                    font.pixelSize: Theme.fontSizeSmall
-                    text: 'Copyright © 2016 Core Comic'
-                    color: Theme.primaryColor
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    font.pixelSize: Theme.fontSizeSmall
-                    text: '<strong>Special thanks to:</strong> <br/>&nbsp;&nbsp;Joaquim Rocha\
-                      <br/>&nbsp;&nbsp;Juan Suarez Romero\
-                      <br/>&nbsp;&nbsp;Micke Prag'
-                    color: Theme.primaryColor
-                    anchors.left: parent.left
-                    onLinkActivated: Qt.openUrlExternally(link)
-                }
-
-                Label {
-                    font.pixelSize: Theme.fontSizeTiny
-                    text: "<style>a { color: " + Theme.highlightColor + "; }</style>" + 'SeriesFinale uses <a href="http://www.thetvdb.com">TheTVDB</a> API but is not endorsed or certified by TheTVDB. Please contribute to it if you can.'
-                    textFormat: Text.RichText
-                    color: Theme.primaryColor
-                    wrapMode: Text.WordWrap
-                    width: parent.width
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onLinkActivated: Qt.openUrlExternally(link)
-                }
-
-                Label {
-                    font.pixelSize: Theme.fontSizeTiny
-                    text: "<style>a { color: " + Theme.highlightColor + "; }</style>" + license
-                    textFormat: Text.RichText
-                    color: Theme.primaryColor
-                    wrapMode: Text.WordWrap
-                    width: parent.width
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onLinkActivated: Qt.openUrlExternally(link)
-                }
-            }
+        MenuItem {
+            text: qsTr("Statistics")
+            onClicked: pageStack.push(Qt.resolvedUrl("StatisticsPage.qml"))
         }
     }
 
-    onStatusChanged: {
-        if (status === PageStatus.Active && !canNavigateForward) {
-            pageStack.pushAttached(Qt.resolvedUrl("StatisticsPage.qml"));
+    property string tvdbLink: "https://www.thetvdb.com"
+    extraSections: InfoSection {
+        title: qsTr("Data")
+        text: qsTr("SeriesFinale uses <a href='%1'>TheTVDB</a> API but is not endorsed or certified by TheTVDB. " +
+                   "Please contribute to it if you can.", "Note: “TheTVDB” is a trademark, so don't translate that.").
+                   arg(tvdbLink)
+        buttons: InfoButton {
+            text: "TheTVDB"
+            onClicked: openOrCopyUrl(tvdbLink)
         }
     }
+
+    /*changelogItems: [
+        // add new items at the top of the list
+        ChangelogItem {
+            version: "1.0.0-1"
+            date: "2023-01-02"  // optional
+            author: "Au Thor"   // optional
+            paragraphs: "A short paragraph describing this initial version."
+        }
+    ]*/
+
+    /*donations.text: donations.defaultTextCoffee
+    donations.services: DonationService {
+        name: "LiberaPay"
+        url: "liberapay.com"
+    }*/
+
+    attributions: [
+        Attribution {
+            name: "SeriesFinale (Python)"
+            entries: ["2009 Joaquim Rocha"]
+            licenses: License { spdxId: "GPL-3.0-or-later" }
+        },
+        Attribution {
+            name: "PyOtherSide"
+            entries: ["2011, 2013-2020 Thomas Perl"]
+            licenses: License { spdxId: "ISC" }
+            sources: "https://github.com/thp/pyotherside"
+            homepage: "https://thp.io/2011/pyotherside/"
+        }
+    ]
+
+    contributionSections: [
+        ContributionSection {
+            groups: [
+                ContributionGroup {
+                    title: qsTr("Programming")
+                    entries: [
+                        "Core Comic",
+                        "Joaquim Rocha",
+                        "Juan Suarez Romero",
+                        "Micke Prag",
+                        "Mirian Margiani",
+                    ]
+                },
+                ContributionGroup {
+                    title: qsTr("Icon Design")
+                    entries: ["Core Comic"]
+                }
+            ]
+        },
+        ContributionSection {
+            title: qsTr("Translations")
+            groups: [
+                ContributionGroup {
+                    title: qsTr("English")
+                    entries: ["Core Comic"]
+                },
+                ContributionGroup {
+                    title: qsTr("Spanish")
+                    entries: ["Carmen F. B."]
+                },
+                ContributionGroup {
+                    title: qsTr("Swedish")
+                    entries: ["Åke Engelbrektson"]
+                },
+                ContributionGroup {
+                    title: qsTr("German")
+                    entries: ["Core Comic", "Mirian Margiani"]
+                }
+            ]
+        }
+    ]
 }

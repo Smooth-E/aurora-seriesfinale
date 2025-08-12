@@ -46,6 +46,9 @@ TRANSLATIONS += translations/harbour-seriesfinale-de.ts \
     translations/harbour-seriesfinale-sv.ts
 
 DISTFILES += \
+    qml/pages/PrioritySelectionDialog.qml \
+    qml/pages/ShowInfoDialog.qml \
+    qml/pages/components/OpalAboutAttribution.qml \
     qml/pages/AboutPage.qml \
     qml/pages/AddShow.qml \
     qml/pages/EpisodeListRowDelegate.qml \

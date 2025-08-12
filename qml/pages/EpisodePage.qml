@@ -1,115 +1,181 @@
-import QtQuick 2.0
+/*
+ * This file is part of harbour-seriesfinale.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ */
+
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-Page {
-    id: episodePage
-    property variant show: undefined
-    property variant episode: undefined
-    property string seasonImg: ''
+import "../modules/Opal/MenuSwitch" 1.0 as M
+import "../modules/Opal/LinkHandler" 1.0 as L
+import "components"
 
-    PageHeader {
-        id: header
-        title: episode.episodeName
+Dialog {
+    id: root
+
+    property var show: ({showName: ""})
+    property var episode: ({episodeName: ""})
+    property string seasonCover
+
+    property ListModel model: null
+    property int index: -1
+
+    readonly property var _nextEpisode: model.get(index + 1) || null
+
+    function ratingToStars(rating) {
+        var y = '★'
+        var n = '☆'
+        var ret = ''
+
+        for (var i = 1; i <= 5; ++i) {
+            if (rating >= i) {
+                ret += y
+            } else {
+                ret += n
+            }
+        }
+
+        return ret
     }
 
-    Item {
-        id: dataItem
-        anchors.top: header.bottom
-        anchors.left: parent.left
-        width: episodePage.isPortrait ? parent.width : grid.width + Theme.paddingLarge
-        anchors.margins: Theme.paddingLarge
-        anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.rightMargin: Theme.horizontalPageMargin
-        height: grid.height
+    acceptDestination: !!_nextEpisode ? Qt.resolvedUrl("EpisodePage.qml") : null
+    acceptDestinationProperties: ({
+        show: show,
+        episode: _nextEpisode,
+        model: model,
+        index: index + 1,
+        seasonCover: seasonCover,
+    })
+    acceptDestinationAction: PageStackAction.Replace
 
-        Grid {
-              id: grid
-              columns: 2
-              spacing: 10
+    SilicaFlickable {
+        anchors.fill: parent
+        contentHeight: column.height + Theme.horizontalPageMargin
 
-              Text {
-                  text: qsTr("Air date:")
-                  font.pixelSize: Theme.fontSizeSmall
-                  color: Theme.primaryColor
-              }
-              Text {
-                  text: episode.airDate
-                  font.pixelSize: Theme.fontSizeSmall
-                  color: Theme.secondaryColor
-              }
-              Text {
-                  text: qsTr("Rating:")
-                  font.pixelSize: Theme.fontSizeSmall
-                  color: Theme.primaryColor
-              }
-              Text {
-                  text: episode.episodeRating
-                  font.pixelSize: Theme.fontSizeSmall
-                  color: Theme.secondaryColor
-              }
-          }
-    }
+        PullDownMenu {
+            M.MenuSwitch {
+                text: qsTr("Watched")
+                checked: episode.isWatched
+                automaticCheck: false
+                onClicked: {
+                    python.call('seriesfinale.seriesfinale.series_manager.set_episode_watched',
+                                [!checked, show.showName, episode.episodeName])
+                }
+            }
+        }
 
-    Item {
-        id: overviewItem
-        anchors.top: episodePage.isPortrait ? dataItem.bottom : header.bottom
-        anchors.left: episodePage.isPortrait ? parent.left : dataItem.right
-        anchors.right: episodePage.isPortrait ? parent.right : parent.right
-        anchors.bottom: episodePage.isPortrait ? watched.top : parent.bottom
-        anchors.margins: Theme.paddingLarge
-        anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.rightMargin: Theme.horizontalPageMargin
-
-        Flickable {
-            id: flickableText
-            height: parent.height
+        Column {
+            id: column
             width: parent.width
-            contentHeight: text.height + overviewTitle.height + 10
-            clip: true
 
-//            onMovingChanged: {
-//                if (horizontalVelocity == 0){
-//                    // do nothing
-//                } else if (horizontalVelocity < 0){
-//                    if (!moving)
-//                        episode = show.get_previous_episode(episode)
-//                } else {
-//                    if (!moving)
-//                        episode = show.get_next_episode(episode)
-//                }
-//            }
-
-            Text {
-                id: overviewTitle
-                font.pixelSize: Theme.fontSizeSmall
-                text: qsTr('Overview:')
-                color: Theme.highlightColor
-            }
-
-            Text {
-                id: text
-                anchors.top: overviewTitle.bottom
-                anchors.topMargin: Theme.paddingMedium
-                width: parent.width
-                text: episode.overviewText
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
+            PageHeader {
+                title: episode.episodeName
+                description: show.showName
                 wrapMode: Text.Wrap
+                descriptionWrapMode: Text.Wrap
+                _titleItem.horizontalAlignment: Text.AlignRight
+            }
+
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge
+            }
+
+            InfoBox {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+
+                /*
+                // vvv Details page with season cover vvv
+                // Disabled because it takes a lot of vertical screen space
+                // and looks quite cramped.
+
+                Row {
+                    width: parent.width
+                    height: childrenRect.height
+                    spacing: Theme.paddingLarge
+
+                    Image {
+                        id: cover
+                        source: seasonCover
+                        height: 1.5*Theme.itemSizeExtraLarge
+                        sourceSize.height: height
+                        fillMode: Image.PreserveAspectFit
+                        smooth: true
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: Qt.openUrlExternally(show.coverImage)
+                        }
+                    }
+
+                    InfoGrid {
+                        width: parent.width - parent.spacing - cover.paintedWidth
+                        anchors.verticalCenter: cover.verticalCenter
+
+                        InfoGridItem {
+                            grid: parent
+                            label: qsTr("Runtime")
+                            value: qsTr("%1 min", "as in “this episode is 30 minutes long").arg(show.runtime)
+                        }
+                        InfoGridItem {
+                            grid: parent
+                            label: qsTr("Air date")
+                            value: episode.airDate
+                        }
+                        InfoGridItem {
+                            grid: parent
+                            label: qsTr("Rating")
+                            value: ratingToStars(Math.ceil(episode.episodeRating/2))
+                        }
+                    }
+                }
+                */
+
+                InfoGrid {
+                    id: grid
+                    columns: widthMetrics.width > width ? 2 : 4
+
+                    TextMetrics {
+                        id: widthMetrics
+                        text: [dateInfo.label, dateInfo.value,
+                               rateInfo.label, rateInfo.value].join(" ")
+                        font: dateInfo.valueLabel.font
+                    }
+
+                    InfoGridItem {
+                        id: dateInfo
+                        grid: parent
+                        label: qsTr("Air date")
+                        value: episode.airDate
+                        visible: !!episode.airDate
+                    }
+                    InfoGridItem {
+                        id: rateInfo
+                        grid: parent
+                        label: qsTr("Rating")
+                        value: ratingToStars(Math.ceil(episode.episodeRating/2))
+                    }
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Description")
+                visible: !!episode.overviewText
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width - 2*Theme.horizontalPageMargin
+                font.pixelSize: Theme.fontSizeMedium
+                color: Theme.secondaryHighlightColor
+                wrapMode: Text.Wrap
+                text: episode.overviewText
+
+                linkColor: Theme.primaryColor
+                onLinkActivated: L.LinkHandler.openOrCopyUrl(link)
             }
         }
-        //VerticalScrollDecorator {}
     }
-
-    TextSwitch {
-        id: watched
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: Theme.paddingLarge
-        anchors.left: parent.left
-        anchors.leftMargin: Theme.horizontalPageMargin
-        text: qsTr("Watched")
-        onCheckedChanged: {
-            python.call('seriesfinale.seriesfinale.series_manager.set_episode_watched', [checked, show.showName, episode.episodeName])
-        }
-    }
-    onEpisodeChanged: watched.checked = episode.isWatched
 }

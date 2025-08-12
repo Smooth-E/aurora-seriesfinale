@@ -43,7 +43,7 @@ Page {
             update();
         }
 
-        if (status === PageStatus.Active) {
+        if (status === PageStatus.Active && !canNavigateForward) {
             pageStack.pushAttached(Qt.resolvedUrl("SurveyPage.qml"), {
                                        isUpdating: Qt.binding(function(){return isUpdating}),
                                        hasChanged: Qt.binding(function(){return hasChanged}),

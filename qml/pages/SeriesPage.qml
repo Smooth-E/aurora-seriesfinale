@@ -217,7 +217,6 @@ Page {
                             item.remorseDelete((function(){
                                 this.python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name',
                                                  [this.model.showName])
-                                this.item.animateRemoval(this.item)
                             }).bind({python: python, item: item, model: model}))
                         }
                     }

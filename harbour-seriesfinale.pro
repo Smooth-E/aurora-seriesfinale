@@ -56,6 +56,7 @@ DISTFILES += \
     qml/pages/SeriesPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/ShowPage.qml \
+    qml/pages/*.qml \
     qml/util.js \
     src/seriesfinale.py \
     src/SeriesFinale/placeholderimage.png \

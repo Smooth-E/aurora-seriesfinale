@@ -7,7 +7,9 @@ Page {
     id: surveyPage
 
     property bool isLoading: false
-    property bool hasChanged: true
+    property bool isUpdating: false
+    property bool doHighlight: false
+    property bool hasChanged: false
 
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_series_list_by_prio', [], function(result) {
@@ -65,7 +67,7 @@ Page {
 
             MenuItem {
                 text: qsTr("Add Show")
-                visible: !seriesPage.isUpdating
+                visible: !isUpdating
                 onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
                 Component { id: addShowComponent; AddShow {} }
             }
@@ -207,4 +209,9 @@ Page {
             }
         }
     }
+
+    Component.onCompleted: {
+        update()
+    }
+
 }

@@ -38,14 +38,17 @@ Page {
         })
     }
 
-
-    Component { id: surveyPage; SurveyPage {} }
     onStatusChanged: {
         if (status === PageStatus.Activating && hasChanged) {
             update();
         }
+
         if (status === PageStatus.Active) {
-            pageStack.pushAttached(surveyPage);
+            pageStack.pushAttached(Qt.resolvedUrl("SurveyPage.qml"), {
+                                       isUpdating: Qt.binding(function(){return isUpdating}),
+                                       hasChanged: Qt.binding(function(){return hasChanged}),
+                                       doHighlight: Qt.binding(function(){return doHighlight}),
+                                   });
         }
     }
 

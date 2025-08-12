@@ -4,7 +4,7 @@ import "pages"
 import "cover"
 
 import io.thp.pyotherside 1.3
-import org.nemomobile.notifications 1.0
+import Nemo.Notifications 1.0
 
 ApplicationWindow
 {

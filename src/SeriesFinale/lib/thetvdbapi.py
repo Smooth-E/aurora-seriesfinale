@@ -53,10 +53,10 @@ class SearchResult:
 class TheTVDB(object):
     def __init__(self, api_key):
         self.api_key = api_key
-        self.mirror_url = "http://www.thetvdb.com"
+        self.mirror_url = "https://www.thetvdb.com"
         self.base_url =  self.mirror_url + "/api"
         self.base_key_url = "%s/%s" % (self.base_url, self.api_key)
-        
+
     class Show(object):
         """A python object representing a thetvdb.com show record."""
         def __init__(self, node, mirror_url):

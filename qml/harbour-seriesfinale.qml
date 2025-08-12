@@ -9,8 +9,9 @@ import Nemo.Notifications 1.0
 ApplicationWindow
 {
     id: app
-    initialPage: Component { id: seriesPage; SeriesPage {} }
-    cover: Component { id: coverPage; CoverPage {} }
+
+    initialPage: Component { SeriesPage {} }
+    cover: Component { CoverPage {} }
 
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All

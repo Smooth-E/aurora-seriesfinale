@@ -72,12 +72,12 @@ class TheTVDB(object):
             self.runtime = node.findtext("Runtime")
             self.status = node.findtext("Status")
             self.language = node.findtext("Language")
-        
+
             # Air details
             self.first_aired = TheTVDB.convert_date(node.findtext("FirstAired"))
             self.airs_day = node.findtext("Airs_DayOfWeek")
             self.airs_time = TheTVDB.convert_time(node.findtext("Airs_Time"))
-        
+
             # Main show artwork
             self.banner_url = "%s/banners/%s" % (mirror_url, node.findtext("banner"))
             self.poster_url = "%s/banners/%s" % (mirror_url, node.findtext("poster"))
@@ -90,7 +90,7 @@ class TheTVDB(object):
 
             # When this show was last updated
             self.last_updated = datetime.datetime.fromtimestamp(int(node.findtext("lastupdated")))
-        
+
         def __str__(self):
             import pprint
             return pprint.saferepr(self)
@@ -113,7 +113,7 @@ class TheTVDB(object):
 
             # Air date
             self.first_aired = TheTVDB.convert_date(node.findtext("FirstAired"))
-            
+
             # DVD Information
             self.dvd_chapter = node.findtext("DVD_chapter")
             self.dvd_disc_id = node.findtext("DVD_discid")
@@ -219,23 +219,23 @@ class TheTVDB(object):
         """Get the show object matching this show_id."""
         url = "%s/series/%s/" % (self.base_key_url, show_id)
         data = urllib.request.urlopen(url)
-        
+
         show = None
         try:
             tree = ET.parse(data)
             show_node = tree.find("Series")
-        
+
             show = TheTVDB.Show(show_node, self.mirror_url)
         except SyntaxError:
             pass
-        
+
         return show
 
     def get_episode(self, episode_id):
         """Get the episode object matching this episode_id."""
         url = "%s/episodes/%s/" % (self.base_key_url, episode_id)
         data = urllib.request.urlopen(url)
-        
+
         episode = None
         try:
             tree = ET.parse(data)
@@ -244,32 +244,32 @@ class TheTVDB(object):
             episode = TheTVDB.Episode(episode_node, self.mirror_url)
         except SyntaxError:
             pass
-        
+
         return episode
-    
+
     def get_show_and_episodes(self, show_id, language = "en"):
         """Get the show object and all matching episode objects for this show_id."""
         url = "%s/series/%s/all/" % (self.base_key_url, show_id)
         if language:
             url += '%s.xml' % language
         data = urllib.request.urlopen(url)
-        
+
         show_and_episodes = None
         try:
             tree = ET.parse(data)
             show_node = tree.find("Series")
-        
+
             show = TheTVDB.Show(show_node, self.mirror_url)
             episodes = []
-        
+
             episode_nodes = tree.getiterator("Episode")
             for episode_node in episode_nodes:
                 episodes.append(TheTVDB.Episode(episode_node, self.mirror_url))
-        
+
             show_and_episodes = (show, episodes)
         except SyntaxError:
             pass
-        
+
         return show_and_episodes
 
     def get_updated_shows(self, period = "day"):

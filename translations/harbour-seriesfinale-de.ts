@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="19"/>
         <source>A TV series database app that helps you keep track of what you are watching.</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Eine App, die dir dabei hilft, den Überblick über deine Fernsehserien zu behalten.</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Statistics</source>
-        <translation type="unfinished">Statistik</translation>
+        <translation>Statistik</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
@@ -80,7 +81,7 @@
     <message>
         <location filename="../qml/pages/AddShow.qml" line="145"/>
         <source>No description available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Beschreibung verfügbar.</translation>
     </message>
 </context>
 <context>
@@ -93,17 +94,17 @@
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="150"/>
         <source>Air date</source>
-        <translation type="unfinished"></translation>
+        <translation>Austrahlung</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="157"/>
         <source>Rating</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewertung</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="164"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
 </context>
 <context>
@@ -309,7 +310,7 @@
     <message>
         <location filename="../qml/pages/PrioritySelectionDialog.qml" line="26"/>
         <source>Select a priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorität wählen</translation>
     </message>
 </context>
 <context>
@@ -474,28 +475,28 @@
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="66"/>
         <source>Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="79"/>
         <source>Runtime</source>
-        <translation type="unfinished"></translation>
+        <translation>Länge</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="80"/>
         <source>%1 min</source>
         <comment>as in “this episode is 30 minutes long</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 min</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="84"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="92"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
 </context>
 <context>
@@ -609,7 +610,7 @@
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="87"/>
         <source>Refreshing...</source>
-        <translation type="unfinished">Aktualisieren ...</translation>
+        <translation>Aktualisieren ...</translation>
     </message>
 </context>
 <context>

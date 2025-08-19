@@ -1,6 +1,7 @@
 /*
  * This file is part of harbour-seriesfinale.
  * SPDX-FileCopyrightText: 2024-2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2025 Smooth-E
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -18,8 +19,7 @@ AboutPageBase {
     appRelease: "1"
       description: qsTr("A TV series database app that helps you " +
                         "keep track of what you are watching.")
-    sourcesUrl: "https://github.com/corecomic/seriesfinale"
-    // translationsUrl: "https://weblate.org"
+    sourcesUrl: "https://github.com/Smooth-E/aurora-seriesfinale"
 
     authors: [
         "2015-%1 Core Comic and contributors".arg((new Date()).getFullYear()),

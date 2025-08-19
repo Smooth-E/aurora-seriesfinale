@@ -4,7 +4,7 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="19"/>
+        <location filename="../qml/pages/AboutPage.qml" line="20"/>
         <source>A TV series database app that helps you keep track of what you are watching.</source>
         <translation type="unfinished"></translation>
     </message>

@@ -5,7 +5,7 @@
     <extra-po-header-language_team>LANGUAGE &lt;LL@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-last_translator>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-last_translator>
     <extra-po-header-po_revision_date>YEAR-MO-DA HO:MI+ZONE</extra-po-header-po_revision_date>
-    <extra-po-header-pot_creation_date>2025-08-12 12:51+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2025-08-19 18:47+0000</extra-po-header-pot_creation_date>
     <extra-po-header-project_id_version>harbour-seriesfinale VERSION</extra-po-header-project_id_version>
     <extra-po-header-report_msgid_bugs_to>EMAIL@ADDRESS</extra-po-header-report_msgid_bugs_to>
     <extra-po-header_comment># Translations template for harbour-seriesfinale.
@@ -112,14 +112,21 @@
     <message>
         <location filename="src/SeriesFinale/series.py" line="508"/>
         <source>%d %b %Y</source>
-        <extracomment>TRANSLATORS:This is a Python-formatted date (day, month, year).Translate it to the form preferred in your language.See: https://strftime.org</extracomment>
+        <extracomment>TRANSLATORS:
+This is a Python-formatted date (day, month, year).
+Translate it to the form preferred in your language.
+See: https://strftime.org
+</extracomment>
         <translation type="unfinished"></translation>
         <extra-po-flags>python-format</extra-po-flags>
     </message>
     <message>
         <location filename="src/SeriesFinale/series.py" line="513"/>
         <source>%d %b</source>
-        <extracomment>TRANSLATORS: This is a Python-formatted date (day and month only).Translate it to the form preferred in your language.See: https://strftime.org</extracomment>
+        <extracomment>TRANSLATORS: This is a Python-formatted date (day and month only).
+Translate it to the form preferred in your language.
+See: https://strftime.org
+</extracomment>
         <translation type="unfinished"></translation>
         <extra-po-flags>python-format</extra-po-flags>
     </message>

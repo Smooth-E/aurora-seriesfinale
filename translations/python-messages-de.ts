@@ -7,7 +7,7 @@
     <extra-po-header-last_translator>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-last_translator>
     <extra-po-header-plural_forms>nplurals=2; plural=(n != 1);</extra-po-header-plural_forms>
     <extra-po-header-po_revision_date>YEAR-MO-DA HO:MI+ZONE</extra-po-header-po_revision_date>
-    <extra-po-header-pot_creation_date>2025-08-12 12:51+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2025-08-19 18:47+0000</extra-po-header-pot_creation_date>
     <extra-po-header-project_id_version>PROJECT VERSION</extra-po-header-project_id_version>
     <extra-po-header-report_msgid_bugs_to>EMAIL@ADDRESS</extra-po-header-report_msgid_bugs_to>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language,Language-Team,Plural-Forms,MIME-Version,Content-Type,Content-Transfer-Encoding,Generated-By</extra-po-headers>
@@ -110,14 +110,21 @@
     <message>
         <location filename="src/SeriesFinale/series.py" line="508"/>
         <source>%d %b %Y</source>
-        <extracomment>TRANSLATORS:This is a Python-formatted date (day, month, year).Translate it to the form preferred in your language.See: https://strftime.org</extracomment>
+        <extracomment>TRANSLATORS:
+This is a Python-formatted date (day, month, year).
+Translate it to the form preferred in your language.
+See: https://strftime.org
+</extracomment>
         <translation>%-d. %B %Y</translation>
         <extra-po-flags>python-format</extra-po-flags>
     </message>
     <message>
         <location filename="src/SeriesFinale/series.py" line="513"/>
         <source>%d %b</source>
-        <extracomment>TRANSLATORS: This is a Python-formatted date (day and month only).Translate it to the form preferred in your language.See: https://strftime.org</extracomment>
+        <extracomment>TRANSLATORS: This is a Python-formatted date (day and month only).
+Translate it to the form preferred in your language.
+See: https://strftime.org
+</extracomment>
         <translation>%-d. %B</translation>
         <extra-po-flags>python-format</extra-po-flags>
     </message>

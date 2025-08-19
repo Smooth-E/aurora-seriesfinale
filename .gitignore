@@ -13,3 +13,6 @@ icons-src/*/raw
 
 libs/opal-translations
 libs/opal-docs
+
+# WSL metadata
+*:Zone.Identifier

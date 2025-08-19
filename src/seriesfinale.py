@@ -25,6 +25,7 @@ import gettext
 import locale
 import os
 import logging
+import sys
 
 from SeriesFinale.series import SeriesManager, Show, Episode
 from SeriesFinale.lib import constants
@@ -193,6 +194,9 @@ class SeriesFinale:
 
     def _save_finished_cb(self, dummy_arg, error):
         logging.debug('All saved!')
+
+# Output Python logs to console
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 1)
 
 seriesfinale = SeriesFinale()
 #pyotherside.atexit(seriesfinale.closeEvent()) #FIXME: not working on sailfish os

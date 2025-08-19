@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=moe.smoothie.seriesfinale
+Exec=sailfish-qml moe.smoothie.seriesfinale
+Name=SeriesFinale
+
+[X-Application]
+# Sandboxing=Disabled
+
+## Enabling Sailjail would require migrating data from
+## .local/share/harbour-seriesfinale/ to .local/share/harbour-seriesfinale/harbour-seriesfinale
+Permissions=Internet
+OrganizationName=moe.smoothie
+ApplicationName=seriesfinale

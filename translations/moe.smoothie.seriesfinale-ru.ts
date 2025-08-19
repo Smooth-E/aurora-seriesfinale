@@ -388,7 +388,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SeriesPage.qml" line="234"/>
+        <location filename="../qml/pages/SeriesPage.qml" line="233"/>
         <source>No shows</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,7 +599,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SurveyPage.qml" line="153"/>
+        <location filename="../qml/pages/SurveyPage.qml" line="152"/>
         <source>No shows</source>
         <translation type="unfinished"></translation>
     </message>
@@ -615,29 +615,29 @@
     </message>
 </context>
 <context>
-    <name>harbour-seriesfinale</name>
+    <name>moe.smoothie.seriesfinale</name>
     <message>
-        <location filename="../qml/harbour-seriesfinale.qml" line="21"/>
+        <location filename="../qml/moe.smoothie.seriesfinale.qml" line="21"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-seriesfinale.qml" line="22"/>
+        <location filename="../qml/moe.smoothie.seriesfinale.qml" line="22"/>
         <source>Pilot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-seriesfinale.qml" line="23"/>
+        <location filename="../qml/moe.smoothie.seriesfinale.qml" line="23"/>
         <source>Episode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-seriesfinale.qml" line="24"/>
+        <location filename="../qml/moe.smoothie.seriesfinale.qml" line="24"/>
         <source>Season</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-seriesfinale.qml" line="25"/>
+        <location filename="../qml/moe.smoothie.seriesfinale.qml" line="25"/>
         <source>Finale</source>
         <translation type="unfinished"></translation>
     </message>

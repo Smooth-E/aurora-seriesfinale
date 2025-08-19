@@ -10,14 +10,14 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-seriesfinale
+TARGET = moe.smoothie.seriesfinale
 
 DEPLOYMENT_PATH = /usr/share/$${TARGET}
 
 src.files = src
 src.path = $${DEPLOYMENT_PATH}
 
-CONFIG += sailfishapp_qml
+CONFIG += auroraapp_qml
 
 SOURCES +=
 
@@ -27,17 +27,17 @@ OTHER_FILES += qml/harbour-seriesfinale.qml \
     rpm/harbour-seriesfinale.spec \
     rpm/harbour-seriesfinale.yaml \
     translations/*.ts \
-    harbour-seriesfinale.desktop
+    moe.smoothie.seriesfinale.desktop
 
-SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
+AURORAAPP_ICONS = 86x86 108x108 128x128 172x172
 
 INSTALLS += src
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+CONFIG += auroraapp_i18n
 
-TRANSLATIONS += translations/harbour-seriesfinale-*.ts
+TRANSLATIONS += translations/moe.smoothie.seriesfinale-*.ts
 
 DISTFILES += \
     qml/pages/PrioritySelectionDialog.qml \

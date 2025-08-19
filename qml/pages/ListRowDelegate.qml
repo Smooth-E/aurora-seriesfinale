@@ -1,7 +1,8 @@
 /*
  * This file is part of harbour-seriesfinale.
- * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2025 Mirian Margiani
+ * SPDX-FileCopyrightText: 2025 Smooth-E
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import QtQuick 2.6
@@ -32,7 +33,7 @@ D.TwoLineDelegate {
     }
 
     descriptionLabel {
-        _elideText: false
+        // _elideText: false
         font.pixelSize: Theme.fontSizeTiny
     }
 

@@ -23,7 +23,8 @@ import sys
 
 SF_NAME = 'SeriesFinale'
 SF_COMPACT_NAME = 'seriesfinale'
-SF_HARBOUR_NAME = 'harbour-' + SF_COMPACT_NAME
+SF_ORG_NAME = 'moe.smoothie'
+SF_FULL_NAME = SF_ORG_NAME + '.' + SF_COMPACT_NAME
 SF_VERSION = '1.5.1'
 SF_DESCRIPTION = 'SeriesFinale is a TV series browser and tracker application'
 SF_URL = 'https://github.com/corecomic/seriesfinale'
@@ -49,7 +50,7 @@ along with %(sf_name)s.  If not, see <http://www.gnu.org/licenses/>.
 """ % {'sf_name': SF_NAME}
 
 HOME_PATH = os.getenv('HOME')
-SF_CONF_FOLDER = HOME_PATH + '/.config/%s' % SF_HARBOUR_NAME
+SF_CONF_FOLDER = HOME_PATH + '/.config/' + SF_ORG_NAME + '/' + SF_COMPACT_NAME
 SF_CONF_FILE = SF_CONF_FOLDER + '/%s.conf' % SF_COMPACT_NAME
 SF_DB_FILE = SF_CONF_FOLDER + '/%s' % 'series.db'
 SF_PID_FILE = '/tmp/seriesfinale.pid'
@@ -57,7 +58,7 @@ SF_LANG_FILE = SF_CONF_FOLDER + '/%s' % 'languages.db'
 _XDG_DATA_HOME = os.getenv('XDG_DATA_HOME') or ''
 _XDG_DATA_HOME = _XDG_DATA_HOME.split(':')[0]
 _DATA_DIR_PREFIX = _XDG_DATA_HOME or os.path.join(HOME_PATH, '.local', 'share')
-DATA_DIR = os.path.join(_DATA_DIR_PREFIX, SF_HARBOUR_NAME)
+DATA_DIR = os.path.join(_DATA_DIR_PREFIX, SF_FULL_NAME)
 if not os.path.exists(DATA_DIR):
     try:
         os.makedirs(DATA_DIR)
@@ -66,7 +67,7 @@ if not os.path.exists(DATA_DIR):
 
 DEFAULT_SYSTEM_APP_DIR = os.path.join(sys.prefix,
                                       'share',
-                                      SF_HARBOUR_NAME)
+                                      SF_FULL_NAME)
 APP_DIR = DEFAULT_SYSTEM_APP_DIR
 QML_DIR = os.path.join(APP_DIR, 'qml')
 
@@ -84,7 +85,7 @@ DEFAULT_LANGUAGES = os.environ.get('LANGUAGE', '').split(':')
 DEFAULT_LANGUAGES += ['en_US', 'pt_PT']
 
 ICON_FOLDER = 'share/pixmaps'
-SF_ICON = os.path.join(sys.prefix, ICON_FOLDER, SF_HARBOUR_NAME + '.png')
+SF_ICON = os.path.join(sys.prefix, ICON_FOLDER, SF_FULL_NAME + '.png')
 
 TVDB_API_KEY = 'FAD75AF31E1B1577'
 
@@ -95,4 +96,3 @@ IMAGE_WIDTH = 100
 IMAGE_HEIGHT = 60
 
 SAVE_TIMEOUT_MS = 300000
-

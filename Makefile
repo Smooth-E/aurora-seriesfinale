@@ -11,6 +11,9 @@
 #               https://pypi.org/project/babel
 #    - msgfmt: a tool for compiling gettext translations from .po to .mo,
 #              comes with the gettext distribution
+#
+#    Installing dependencies in Aurora SDK:
+#    - zypper in gettext python3 python3-pip && pip install babel
 ##########################################################################
 
 TSFILES = $(wildcard translations/python-messages-*.ts)
@@ -19,7 +22,7 @@ TSFAKES = $(patsubst translations/python-messages-%.ts,translations/python-messa
 LOCALEDIR = src/SeriesFinale/locale
 MOFILES = $(patsubst translations/%/LC_MESSAGES/python-messages.po,$(LOCALEDIR)/%/LC_MESSAGES/seriesfinale.mo, $(POFILES))
 
-LCONVERT = /usr/bin/lconvert6
+LCONVERT = lconvert
 PYBABEL = pybabel
 MSGFMT = msgfmt
 

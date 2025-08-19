@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.desktop": "ini",
+        "*.spec": "shellscript",
+        "*.pro": "shellscript",
+        "*.ts": "xml"
+    },
+    "cSpell.words": [
+        "Mirian",
+        "Nemo",
+        "Sailjail",
+        "Sandboxing",
+        "seriesfinale"
+    ]
+}

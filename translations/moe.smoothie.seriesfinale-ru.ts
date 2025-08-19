@@ -6,12 +6,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="19"/>
         <source>A TV series database app that helps you keep track of what you are watching.</source>
-        <translation type="unfinished"></translation>
+        <translation>Менеджер сериалов и шоу, который поможет вам вспомнить, что вы недавно смотрели.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Статистика</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
@@ -22,7 +22,7 @@
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>SeriesFinale uses &lt;a href=&apos;%1&apos;&gt;TheTVDB&lt;/a&gt; API but is not endorsed or certified by TheTVDB. Please contribute to it if you can.</source>
         <comment>Note: “TheTVDB” is a trademark, so don&apos;t translate that.</comment>
-        <translation type="unfinished"></translation>
+        <translation>SeriesFinale использует API &lt;a href=&apos;%1&apos;&gt;TheTVDB&lt;/a&gt;, однако не является официальным продуктом сервиса. Это неофициальное приложение, так что вы всегда можете предложить улучшения или исправления.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="85"/>
@@ -65,22 +65,22 @@
     <message>
         <location filename="../qml/pages/AddShow.qml" line="70"/>
         <source>Search options</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки поиска</translation>
     </message>
     <message>
         <location filename="../qml/pages/AddShow.qml" line="80"/>
         <source>Add show</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/AddShow.qml" line="98"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <location filename="../qml/pages/AddShow.qml" line="145"/>
         <source>No description available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет описания</translation>
     </message>
 </context>
 <context>
@@ -88,22 +88,22 @@
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="58"/>
         <source>Watched</source>
-        <translation type="unfinished"></translation>
+        <translation>Просмотрен</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="150"/>
         <source>Air date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата показа</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="157"/>
         <source>Rating</source>
-        <translation type="unfinished"></translation>
+        <translation>Рейтинг</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodePage.qml" line="164"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
@@ -311,7 +311,7 @@
     <message>
         <location filename="../qml/pages/PrioritySelectionDialog.qml" line="26"/>
         <source>Select a priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать приоритет</translation>
     </message>
 </context>
 <context>
@@ -319,12 +319,12 @@
     <message>
         <location filename="../qml/pages/SearchSettingsPage.qml" line="35"/>
         <source>Search options</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки поиска</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchSettingsPage.qml" line="40"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык</translation>
     </message>
 </context>
 <context>
@@ -332,17 +332,17 @@
     <message>
         <location filename="../qml/pages/SeasonPage.qml" line="65"/>
         <source>Mark all</source>
-        <translation type="unfinished"></translation>
+        <translation>Пометить все</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeasonPage.qml" line="74"/>
         <source>Mark none</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить метки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeasonPage.qml" line="119"/>
         <source>No episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет серий</translation>
     </message>
 </context>
 <context>
@@ -355,42 +355,42 @@
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="142"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="161"/>
         <source>Refreshing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновление...</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="146"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="154"/>
         <source>Add Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="200"/>
         <source>Mark next episode</source>
-        <translation type="unfinished"></translation>
+        <translation>Отметить следующую серию</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="208"/>
         <source>Mark show as watched</source>
-        <translation type="unfinished"></translation>
+        <translation>Пометить как просмотренное</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="215"/>
         <source>Delete show</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../qml/pages/SeriesPage.qml" line="233"/>
         <source>No shows</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет шоу</translation>
     </message>
 </context>
 <context>
@@ -398,77 +398,77 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="64"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировка</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="74"/>
         <source>Show sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировка шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="77"/>
         <source>By title</source>
-        <translation type="unfinished"></translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="78"/>
         <source>By next episode date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата последней серии</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="79"/>
         <source>By last aired episode</source>
-        <translation type="unfinished"></translation>
+        <translation>Последняя серия в эфире</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="85"/>
         <source>Seasons sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировка сезонов</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Episode sorting</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировка серий</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>Sort by genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировать по жанру</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Add special seasons</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавлять специальные сезоны</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Update ended shows</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновлять закончившиеся шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="114"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Прочее</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="129"/>
         <source>Highlight season premiere</source>
-        <translation type="unfinished"></translation>
+        <translation>Выделять премьеры сезонов</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="110"/>
         <source>Sort by priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировать по приоритету</translation>
     </message>
 </context>
 <context>
@@ -476,28 +476,28 @@
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="66"/>
         <source>Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Ссылки</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="79"/>
         <source>Runtime</source>
-        <translation type="unfinished"></translation>
+        <translation>Продолжительность</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="80"/>
         <source>%1 min</source>
         <comment>as in “this episode is 30 minutes long</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 мин.</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="84"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowInfoDialog.qml" line="92"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
@@ -505,37 +505,37 @@
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="80"/>
         <source>Refreshing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновление...</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="68"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="75"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="112"/>
         <source>Mark None</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить метки</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="112"/>
         <source>Mark All</source>
-        <translation type="unfinished"></translation>
+        <translation>Пометить все</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="125"/>
         <source>Delete season</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить сезон</translation>
     </message>
     <message>
         <location filename="../qml/pages/ShowPage.qml" line="149"/>
         <source>No seasons</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет сезонов</translation>
     </message>
 </context>
 <context>
@@ -543,42 +543,42 @@
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="49"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Статистика</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="53"/>
         <source>Number of shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Всего шоу:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="61"/>
         <source>Watched shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Просмотрено шоу:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="65"/>
         <source>Number of episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Всего серий:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="69"/>
         <source>Watched episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Просмотрено серий:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="73"/>
         <source>Days spent watching:</source>
-        <translation type="unfinished"></translation>
+        <translation>Дней просмотра:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="57"/>
         <source>Ended shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Закончившиеся шоу:</translation>
     </message>
     <message>
         <location filename="../qml/pages/StatisticsPage.qml" line="77"/>
         <source>Last refresh:</source>
-        <translation type="unfinished"></translation>
+        <translation>Последнее обновление:</translation>
     </message>
 </context>
 <context>
@@ -586,32 +586,32 @@
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="80"/>
         <source>Add Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="93"/>
         <source>Survey Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Анкета</translation>
     </message>
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="134"/>
         <source>Delete show</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="152"/>
         <source>No shows</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет шоу</translation>
     </message>
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="126"/>
         <source>Change show priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить приоритет</translation>
     </message>
     <message>
         <location filename="../qml/pages/SurveyPage.qml" line="87"/>
         <source>Refreshing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновление...</translation>
     </message>
 </context>
 <context>
@@ -619,27 +619,27 @@
     <message>
         <location filename="../qml/moe.smoothie.seriesfinale.qml" line="21"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет</translation>
     </message>
     <message>
         <location filename="../qml/moe.smoothie.seriesfinale.qml" line="22"/>
         <source>Pilot</source>
-        <translation type="unfinished"></translation>
+        <translation>Пилот</translation>
     </message>
     <message>
         <location filename="../qml/moe.smoothie.seriesfinale.qml" line="23"/>
         <source>Episode</source>
-        <translation type="unfinished"></translation>
+        <translation>Серия</translation>
     </message>
     <message>
         <location filename="../qml/moe.smoothie.seriesfinale.qml" line="24"/>
         <source>Season</source>
-        <translation type="unfinished"></translation>
+        <translation>Сезон</translation>
     </message>
     <message>
         <location filename="../qml/moe.smoothie.seriesfinale.qml" line="25"/>
         <source>Finale</source>
-        <translation type="unfinished"></translation>
+        <translation>Финал</translation>
     </message>
 </context>
 </TS>

@@ -1,0 +1,38 @@
+# SeriesFinale
+
+SeriesFinale - каталог просмотренных шоу и сериалов на основе API сервиса [TheTVDB](http://www.thetvdb.com).
+
+## Сборка
+
+Сборка проекта осуществляется внутри Aurora SDK Build Engine. Вы можете использовать другие способы сборки, но совместимость не гарантируется. Мы будем рады вашим изменением для совместимости с другими средами сборки.
+
+При сборки в SDK используйте так называемый "shadow build":
+```sh
+mkdir -p build && cd build
+aurora_psdk mb2 -t $TARGET -x build ../
+```
+
+О подписи и установке пакетов на устройство можно почитать в [документации](https://developer.auroraos.ru/doc/sdk).
+
+## Авторы
+
+Это порт приложения для ОС Аврора, основанный на порте для Sailfish OS, который, в свою очередь, построен на основе оригинального приложения для системы Maemo.
+
+- Приложения для Sailfish OS: https://github.com/joaquimrocha/SeriesFinale
+  <br/>Поддерживается [ichthyosaurus](https://github.com/ichthyosaurus)
+- Приложение для Maemo: https://github.com/joaquimrocha/SeriesFinale
+  <br/>Разработано Joaquim Rocha и Juan A. Suarez 
+
+Локализация:
+- Немецкий: [@corecomic](https://github.com/corecomic/) и [@ichthyosaurus](https://github.com/ichthyosaurus)
+- Испанский: [@carmenfdezb](https://github.com/carmenfdezb)
+- Шведский: [@eson57](https://github.com/eson57)
+- Русский: [@smooth-e](https://github.com/smooth-e)
+
+**Примечание:** на ОС Аврора доступны только языки Русский и Английский.
+
+## Лицензирование
+
+SeriesFinale **не является** официальным продуктом TheTVDB. Данный проект - работа волонтеров. Не стесняйтесь предлагать свои изменения и улучшения, а также сообщать о проблемах.
+
+SeriesFinale распространяется под лицензией [GPLv3.0 или новее](https://spdx.org/licenses/GPL-3.0-or-later.html). Разработчики не предоставляют никаких гарантий и не несут ответственности за ущерб.

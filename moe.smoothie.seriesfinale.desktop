@@ -2,7 +2,7 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=moe.smoothie.seriesfinale
-Exec=sailfish-qml moe.smoothie.seriesfinale
+Exec=moe.smoothie.seriesfinale
 Name=SeriesFinale
 
 [X-Application]

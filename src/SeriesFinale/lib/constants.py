@@ -3,6 +3,7 @@
 ###########################################################################
 #    SeriesFinale
 #    Copyright (C) 2009 Joaquim Rocha <jrocha@igalia.com>
+#    Copyright (C) 2025 Smooth-E <smoothie@disroot.com>
 # 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -78,7 +79,7 @@ PLACEHOLDER_IMAGE = os.path.join(APP_DIR, 'src/SeriesFinale/placeholderimage.png
 DOWNLOADING_IMAGE = os.path.join(APP_DIR, 'downloadingimage.png')
 QML_MAIN          = os.path.join(QML_DIR, 'main.qml')
 
-LOCALE_DIR = os.path.join(APP_DIR, 'src/SeriesFinale/locale')
+LOCALE_DIR = os.path.join(APP_DIR, 'locale')
 
 
 DEFAULT_LANGUAGES = os.environ.get('LANGUAGE', '').split(':')

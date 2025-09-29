@@ -78,6 +78,7 @@ DISTFILES += \
 
 libdir = /usr/share/$$TARGET/lib
 libexecdir = /usr/libexec/$$TARGET
+cpython_version = "3.8"
 
 message(Building for architecture $$QT_ARCH)
 equals(QT_ARCH, arm64) {
@@ -94,10 +95,10 @@ message(Selected vendor dir $$vendor)
 
 python_bin.path = $$libexecdir
 python_bin.files = $$vendor/bin/python3 \
-                   $$vendor/bin/python3.13
+                   $$vendor/bin/python3.8
 
 python_lib.path = $$libdir
-python_lib.files = $$vendor/lib/python3.13 \
+python_lib.files = $$vendor/lib/python3.8 \
                    $$vendor/lib/lib*
 
 pyotherside.path = $$libdir/

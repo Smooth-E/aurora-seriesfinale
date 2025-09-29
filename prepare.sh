@@ -8,6 +8,7 @@
 
 target=""
 arch=""
+cpython_version="3.8"
 cpython_enable_optimizations="--enable-optimizations"
 
 help()
@@ -89,7 +90,7 @@ build_pyotherside()
         $build_flags && \
         echo Building pyotherside: qmake... && \
         qmake PREFIX=$(pwd)/../../../vendor/$arch/ \
-              INCLUDEPATH+=$(pwd)/../../../vendor/$arch/include/python3.13/ \
+              INCLUDEPATH+=$(pwd)/../../../vendor/$arch/include/python$cpython_version/ \
               LIBS+=-L$(pwd)/../../../vendor/$arch/lib/ .. && \
         echo Building pyotherside: make... && \
         PATH=$(pwd)/../../../vendor/$arch/bin/:$PATH make -j$(nproc --all) && \

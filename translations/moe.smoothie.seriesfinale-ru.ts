@@ -25,39 +25,49 @@
         <translation>SeriesFinale использует API &lt;a href=&apos;%1&apos;&gt;TheTVDB&lt;/a&gt;, однако не является официальным продуктом сервиса. Это неофициальное приложение, так что вы всегда можете предложить улучшения или исправления.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="85"/>
+        <location filename="../qml/pages/AboutPage.qml" line="81"/>
         <source>Programming</source>
         <translation>Программирование</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="95"/>
+        <location filename="../qml/pages/AboutPage.qml" line="92"/>
         <source>Icon Design</source>
         <translation>Дизайн иконок</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="101"/>
+        <location filename="../qml/pages/AboutPage.qml" line="96"/>
+        <source>Aurora OS port</source>
+        <translation>Порт для ОС Аврора</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="102"/>
         <source>Translations</source>
         <translation>Перевод</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="104"/>
+        <location filename="../qml/pages/AboutPage.qml" line="105"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="108"/>
+        <location filename="../qml/pages/AboutPage.qml" line="109"/>
         <source>Spanish</source>
         <translation>Испанский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="112"/>
+        <location filename="../qml/pages/AboutPage.qml" line="113"/>
         <source>Swedish</source>
         <translation>Шведский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="116"/>
+        <location filename="../qml/pages/AboutPage.qml" line="117"/>
         <source>German</source>
         <translation>Немецкий</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="121"/>
+        <source>Russian</source>
+        <translation>Русский</translation>
     </message>
 </context>
 <context>

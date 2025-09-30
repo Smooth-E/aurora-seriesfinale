@@ -39,12 +39,8 @@ AboutPageBase {
     extraSections: InfoSection {
         title: qsTr("Data")
         text: qsTr("SeriesFinale uses <a href='%1'>TheTVDB</a> API but is not endorsed or certified by TheTVDB. " +
-                   "Please contribute to it if you can.", "Note: “TheTVDB” is a trademark, so don't translate that.").
-                   arg(tvdbLink)
-        buttons: InfoButton {
-            text: "TheTVDB"
-            onClicked: openOrCopyUrl(tvdbLink)
-        }
+                   "Please contribute to it if you can.", "Note: “TheTVDB” is a trademark, so don't translate that.")
+                   .arg(tvdbLink)
     }
 
     /*changelogItems: [
@@ -89,11 +85,16 @@ AboutPageBase {
                         "Juan Suarez Romero",
                         "Micke Prag",
                         "Mirian Margiani",
+                        "Smooth-E"
                     ]
                 },
                 ContributionGroup {
                     title: qsTr("Icon Design")
                     entries: ["Core Comic"]
+                },
+                ContributionGroup {
+                    title: qsTr("Aurora OS port")
+                    entries: [ "Smooth-E" ]
                 }
             ]
         },
@@ -115,6 +116,10 @@ AboutPageBase {
                 ContributionGroup {
                     title: qsTr("German")
                     entries: ["Core Comic", "Mirian Margiani"]
+                },
+                ContributionGroup {
+                    title: qsTr("Russian")
+                    entries: [ "Smooth-E" ]
                 }
             ]
         }

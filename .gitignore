@@ -1,7 +1,6 @@
 *.user*
 build/
 build-release/
-dist/
 __pycache__
 rpm/*.rpm
 TODO

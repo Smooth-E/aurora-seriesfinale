@@ -3,7 +3,8 @@
         "*.desktop": "ini",
         "*.spec": "shellscript",
         "*.pro": "shellscript",
-        "*.ts": "xml"
+        "*.ts": "xml",
+        "*.changes": "shellscript"
     },
     "cSpell.words": [
         "Engelbrektson",

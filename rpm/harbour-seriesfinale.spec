@@ -13,8 +13,8 @@ Name:       moe.smoothie.seriesfinale
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 
-Summary:    SeriesFinale is a TV series browser and tracker application.
-Version:    1.5.1
+Summary:    SeriesFinale - менеджер просмотренных шоу и сериалов на основе API сервиса TheTVDB.
+Version:    1.5.1.1
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3
@@ -28,11 +28,10 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-SeriesFinale is a TV series browser and tracker application
-Its goal is to help you manage the TV shows you watch regularly and
-keep track of the episodes you have seen so far. The shows and episodes
-can be retrieved automatically by using the “TheTVDB API” to help you
-get to the "series finale" with the least effort.
+SeriesFinale - менеджер сериалов и шоу.
+Его цель - сохранить ваш прогресс просмотра и помочь вам всегда быть в курсе, что посмотреть дальше.
+Шоу и конкретные серии для каждого из них предоставляются API сервиса TheTVDB.
+Смотреть шоу до конца еще никогда не было так легко!
 
 
 %prep

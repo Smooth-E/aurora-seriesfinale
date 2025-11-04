@@ -8,6 +8,12 @@
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+
+* Wed Nov 4 2026 Smooth-E <smoothie@disroot.org> 1.5.1.1-1
+- Первая версия для ОС Аврора
+- Улучшены переводы на русский язык
+- Компоненты cpython и pyotherside теперь поставляются вместе с приложением
+
 * Sat Jan 21 2017 Core Comic <core.comic@gmail.com> 1.5.1-1
 - Updated translations
 

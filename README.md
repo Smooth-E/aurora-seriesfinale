@@ -2,7 +2,7 @@
 
 # SeriesFinale для ОС Аврора
 
-SeriesFinale - каталог просмотренных шоу и сериалов на основе API сервиса [TheTVDB](http://www.thetvdb.com).
+SeriesFinale - менеджер просмотренных шоу и сериалов на основе API сервиса [TheTVDB](http://www.thetvdb.com).
 
 ## Сборка
 
